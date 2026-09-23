@@ -1,4 +1,3 @@
-# bonus - eggholder
 
 import os
 import numpy as np
@@ -35,7 +34,6 @@ if __name__ == "__main__":
                os.path.join(OUT_DIR, "fig3_eggholder_a_e.png"),
                fn_optimum=None)
 
-    # porovnanie so schwefelom
     schwef = np.load(os.path.join(OUT_DIR, "schwefel_a_e.npz"))
     print("\n== Porovnanie priemerneho final-best fitness (mensie = lepsie) ==")
     print(f"{'var':4s} {'Schwefel-10':>14s} {'Eggholder-10':>14s}")

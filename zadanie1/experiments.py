@@ -94,7 +94,6 @@ if __name__ == "__main__":
 
     print("== Schwefel-10: experimenty f-i (ablacia operatorov, zaklad = e) ==")
     configs_fi = build_configs_f_to_i(ga.schwefel)
-    # e aj sem, nech je v grafe na porovnanie
     configs_fi_with_e = {"e": configs_ae["e"], **configs_fi}
     results_fi = run_group(configs_fi_with_e)
     save_results(results_fi, os.path.join(OUT_DIR, "schwefel_f_i.npz"))

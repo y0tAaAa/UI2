@@ -59,7 +59,6 @@ def plot_group(group, titles, suptitle, out_path, fn_optimum=None, ncols=3, shar
         if ylim is not None:
             ax.set_ylim(ylim)
 
-    # prazdne subploty
     for idx in range(n, nrows * ncols):
         axes[idx // ncols][idx % ncols].axis("off")
 

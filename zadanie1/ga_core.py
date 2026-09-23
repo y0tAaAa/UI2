@@ -2,8 +2,6 @@ from dataclasses import dataclass, field
 from typing import Callable, Optional
 import importlib
 
-# Import dynamically so editors do not report a missing direct import in this
-# module when NumPy is provided by the selected Python environment.
 np = importlib.import_module("numpy")
 
 import genetic_all as ga
@@ -11,32 +9,26 @@ import genetic_all as ga
 
 @dataclass
 class GAConfig:
-    name: str                      # kratky identifikator experimentu, napr. "a"
-    fitness_fn: Callable           # napr. ga.schwefel alebo ga.eggholder
+    name: str
+    fitness_fn: Callable
     n_genes: int = 10
     lower: float = -500.0
     upper: float = 500.0
     pop_size: int = 50
     generations: int = 250
 
-    # --- selekcia (selektivny tlak) ---
-    # 'tournament' -> ga.seltourn (velky tlak)
-    # 'roulette'   -> ga.selsus   (stredny tlak)
-    # 'random'     -> ga.selrand  (ziadny/velmi maly tlak)
     selection: str = "tournament"
-    elite_count: int = 1           # kolko najlepsich jedincov sa vzdy prenesie bez zmeny
+    elite_count: int = 1
 
-    # --- krizenie ---
     crossover_on: bool = True
     cross_pts: int = 1
-    cross_mode: int = 1            # 1 = nahodne dvojice, 0 = susedne dvojice
+    cross_mode: int = 1
 
-    # --- mutacie (diverzita) ---
-    mutx_on: bool = True           # globalna mutacia (velky skok, novy nahodny gen)
+    mutx_on: bool = True
     mutx_rate: float = 0.05
-    muta_on: bool = True           # lokalna mutacia (maly aditivny posun)
+    muta_on: bool = True
     muta_rate: float = 0.08
-    muta_amp: float = 20.0         # amplituda lokalnej mutacie (v jednotkach genu)
+    muta_amp: float = 20.0
 
     seed: Optional[int] = None
 
@@ -87,7 +79,6 @@ def run_ga(cfg: GAConfig):
         best_hist[g] = best_ever_f
         mean_hist[g] = float(np.mean(fit))
 
-        # elitizmus: najlepsi jedinci sa nezmeneni prenesu do dalsej generacie
         if cfg.elite_count > 0:
             elite_pop, elite_fit = ga.selsort(pop, fit, cfg.elite_count)
         else:
