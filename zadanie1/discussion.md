@@ -73,22 +73,22 @@ zabezpečuje diverzitu potrebnú na únik z lokálnych miním. Kríženie zohrá
 ## 4. Bonus - Eggholder-10 (porovnanie so Schwefelom)
 
 Rovnaká sada a-e zopakovaná na 10-rozmernej Eggholder funkcii (doména `[-512,512]`).
+Pri 250 generáciách bol najlepší beh e len -7595.5, preto 2000 generácií a variant e
+doladený: 3-bodové kríženie, `muta_rate=0.2`, `amp=5`.
 
-| variant | Schwefel-10 | Eggholder-10 |
-|---|---|---|
-| a | -4010.5 | -6508.0 |
-| b | -4189.8 | -6593.4 |
-| c | -2285.3 | -3630.7 |
-| d | -2129.4 | -3174.1 |
-| e | -4187.3 | **-6957.1** |
+| variant | Schwefel-10 priemer | Eggholder-10 priemer | Eggholder-10 najlepší beh |
+|---|---|---|---|
+| a | -4010.5 | -7031.9 | -7319.1 |
+| b | -4189.8 | -6758.4 | -7260.6 |
+| c | -2285.3 | -4060.5 | -4248.5 |
+| d | -2129.4 | -3829.1 | -4194.3 |
+| e | -4187.3 | **-7609.5** | **-8229.0** |
 
-Absolútne hodnoty fitness nie sú medzi funkciami priamo porovnateľné (iná škála/tvar
-funkcie), ale **relatívny vzorec je rovnaký**: konfigurácie s veľkým selektívnym tlakom
-(a, b, e) výrazne prekonávajú konfigurácie s malým tlakom (c, d), a to na oboch
-funkciách. Na Eggholder funkcii navyše kompromisný variant e dokonca mierne prekonal
-extrémny variant b - Eggholder má členitejší, menej separovateľný reliéf ako Schwefel,
-takže o niečo väčšia diverzita (miernejšie mutácie a slabší elitizmus v e oproti b) tu
-pomáha unikať z lokálnych miním o niečo lepšie než čisto elitárna stratégia b.
+Hranicu -8000 prekonali 2 zo 6 behov variantu e. Absolútne hodnoty fitness nie sú medzi
+funkciami priamo porovnateľné, ale poradie je rovnaké: veľký tlak (a, b, e) je výrazne
+lepší ako malý (c, d). Na Eggholderi b optimum spoľahlivo nenájde a najlepší je doladený
+kompromis e - funkcia je členitejšia a premenné sú závislé, takže treba viac diverzity
+a dlhší beh.
 
 ## Zhrnutie
 

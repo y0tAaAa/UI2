@@ -97,7 +97,7 @@ def main():
 
     fi = load_group(os.path.join(OUT_DIR, "schwefel_f_i.npz"), ["e", "f", "g", "h", "i"])
     plot_group(fi, TITLES_FI,
-               "Schwefel-10: ablácia operátorov na variante e (e-i)",
+               "Schwefel-10: vypínanie operátorov vo variante e (e-i)",
                os.path.join(OUT_DIR, "fig2_schwefel_e_i.png"),
                fn_optimum=SCHWEFEL10_OPT)
 

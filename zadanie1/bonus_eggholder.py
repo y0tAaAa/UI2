@@ -9,6 +9,7 @@ from experiments import (
 from plot_results import load_group, plot_group, TITLES_AE
 
 EGG_LOWER, EGG_UPPER = -512.0, 512.0
+EGG_GENERATIONS = 2000
 
 
 def build_configs_eggholder():
@@ -16,6 +17,11 @@ def build_configs_eggholder():
     for cfg in configs.values():
         cfg.lower = EGG_LOWER
         cfg.upper = EGG_UPPER
+        cfg.generations = EGG_GENERATIONS
+    # e doladene pre eggholder
+    configs["e"].cross_pts = 3
+    configs["e"].muta_rate = 0.2
+    configs["e"].muta_amp = 5.0
     return configs
 
 
@@ -26,7 +32,8 @@ if __name__ == "__main__":
     save_results(results, os.path.join(OUT_DIR, "eggholder_a_e.npz"))
 
     for key in results:
-        print(f"  Eggholder {key}: priemerny final best = {results[key]['final_best'].mean():.3f}")
+        fb = results[key]["final_best"]
+        print(f"  Eggholder {key}: priemer = {fb.mean():.3f}, najlepsi beh = {fb.min():.3f}")
 
     egg = load_group(os.path.join(OUT_DIR, "eggholder_a_e.npz"), ["a", "b", "c", "d", "e"])
     plot_group(egg, TITLES_AE,
